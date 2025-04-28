@@ -1,0 +1,239 @@
+/* ... conteúdo original ... */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #121212;
+  color: #ffffff;
+  margin: 0;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.login-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #121212;
+  text-align: center;
+  padding: 20px;
+}
+
+.login-screen h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.login-subtitle {
+  font-size: 16px;
+  margin-bottom: 30px;
+  color: #ccc;
+}
+
+.btn-login {
+  width: 220px;
+  padding: 12px 24px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.btn-login.google {
+  background-color: #4285f4;
+  color: white;
+}
+
+.btn-login.google:hover {
+  background-color: #2c6bd9;
+}
+
+.btn-login.anonimo {
+  background-color: #555;
+  color: white;
+}
+
+.btn-login.anonimo:hover {
+  background-color: #777;
+}
+
+.login-note {
+  margin-top: 20px;
+  font-size: 13px;
+  color: #ffcc00;
+}
+
+#gameScreen {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.fase {
+  background: #1e1e1e;
+  padding: 30px;
+  border-radius: 20px;
+  max-width: 600px;
+  width: 100%;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.7);
+  text-align: center;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin: 15px auto;
+  display: block;
+}
+
+input[type="text"] {
+  padding: 12px;
+  width: 70%;
+  margin: 0;
+  border: 1px solid #444;
+  border-radius: 8px;
+  font-size: 16px;
+  background-color: #333;
+  color: white;
+}
+
+.resposta-bloco {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.resposta-bloco button {
+  padding: 12px;
+  background-color: #28a745;
+  border-radius: 8px;
+  border: none;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.resposta-bloco button:hover {
+  background-color: #218838;
+}
+
+.mensagem {
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+
+.marcador {
+  font-size: 14px;
+  color: #aaa;
+  margin-bottom: 10px;
+  text-align: center;
+  width: 100%;
+}
+
+
+
+.barra-progresso {
+  width: 100%;
+  background-color: #333;
+  border-radius: 10px;
+  margin: 10px 0;
+  height: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+
+.progresso {
+  height: 100%;
+  background-color: #28a745;
+  width: 0%;
+  border-radius: 10px;
+  transition: width 0.4s ease;
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .fase {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .resposta-bloco {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  input[type="text"] {
+    width: 100%;
+  }
+}
+
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #121212;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  color: white;
+  text-align: center;
+}
+
+.spinner {
+  border: 6px solid #333;
+  border-top: 6px solid #28a745;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.oculto-por-loading {
+  visibility: hidden !important;
+}
+
+
+.fase-status {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto 20px auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+}

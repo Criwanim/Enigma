@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Jogo de Lógica e Investigação</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div id="loginScreen" class="login-screen">
+    <h2>Bem-vindo ao <strong>Enigmalizando</strong></h2>
+    <p class="login-subtitle">Escolha sua opção de login para começar:</p>
+
+    <button onclick="loginGoogle()" class="btn-login google">Google</button>
+    <button onclick="loginAnonimo()" class="btn-login anonimo">Anônimo</button>
+
+    <p class="login-note">⚠️ No modo anônimo, o progresso não será salvo.</p>
+  </div>
+
+  <div id="gameScreen" style="display: none;">
+    <div class="container">
+      <div class="fase">
+        <div class="fase-status">
+          <div id="marcadorFase" class="marcador"></div>
+          <div class="barra-progresso">
+            <div id="progresso" class="progresso"></div>
+          </div>
+        </div>
+
+        <h2 id="titulo">Título da Fase</h2>
+        <img id="imagem" src="" alt="Imagem da pista">
+        <p id="descricao">Descrição da pista</p>
+        <div class="resposta-bloco">
+          <input type="text" id="resposta" placeholder="Digite sua resposta" onkeydown="if(event.key==='Enter'){ verificarResposta(); }">
+          <button onclick="verificarResposta()">✔</button>
+        </div>
+        <div class="mensagem" id="mensagem"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="loadingOverlay" class="loading-overlay" style="display: none;">
+    <div class="spinner"></div>
+    <p id="loadingText">Carregando...</p>
+  </div>
+
+  <div id="faseLoadingOverlay" class="loading-overlay" style="display: none;">
+    <div class="spinner"></div>
+    <p id="faseLoadingText">Carregando próxima fase...</p>
+  </div>
+</body>
+</html>
