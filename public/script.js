@@ -90,6 +90,7 @@ function carregarFase() {
   document.getElementById('marcadorFase').innerText = `Fase ${faseAtual + 1} de ${fases.length}`;
 
   atualizarProgresso();
+  atualizarContador();
 }
 
 function verificarResposta() {
@@ -102,6 +103,7 @@ function verificarResposta() {
     mensagem.innerText = "Correto! Carregando próxima fase...";
     desempenho[faseAtual] = true;
     atualizarProgresso();
+  atualizarContador();
     mostrarFaseLoading();
 
     setTimeout(() => {
@@ -147,4 +149,14 @@ function loginAnonimo() {
   document.getElementById("loginScreen").style.display = "none";
   document.getElementById("gameScreen").style.display = "flex";
   carregarFasesEDepois(carregarFase);
+}
+
+function atualizarContador() {
+  const respostaInput = document.getElementById('resposta');
+  const contador = document.getElementById('contadorCaracteres');
+  const respostaCorreta = fases[faseAtual]?.respostaCorreta || "";
+
+  const restantes = Math.max(0, respostaCorreta.length - respostaInput.value.length);
+
+  contador.innerText = `Caracteres restantes: ${restantes}`;
 }

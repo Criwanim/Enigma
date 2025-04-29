@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -35,9 +36,10 @@
         <img id="imagem" src="" alt="Imagem da pista">
         <p id="descricao">Descrição da pista</p>
         <div class="resposta-bloco">
-          <input type="text" id="resposta" placeholder="Digite sua resposta" onkeydown="if(event.key==='Enter'){ verificarResposta(); }">
+          <input type="text" id="resposta" placeholder="Digite sua resposta" oninput="atualizarContador()" onkeydown="if(event.key==='Enter'){ verificarResposta(); }">
           <button onclick="verificarResposta()">✔</button>
         </div>
+        <div id="contadorCaracteres" class="contador-caracteres"></div>
         <div class="mensagem" id="mensagem"></div>
       </div>
     </div>
