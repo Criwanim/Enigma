@@ -1,0 +1,35 @@
+const firebaseConfig = {
+  apiKey: "AIzaSyBfDQB_VCbGKwGGCkpgmONyIA0FpArcTb4",
+  authDomain: "enigma-a7af6.firebaseapp.com",
+  databaseURL: "https://enigma-a7af6.firebaseio.com",
+  projectId: "enigma-a7af6",
+  storageBucket: "enigma-a7af6.appspot.com",
+  messagingSenderId: "401368607574",
+  appId: "1:401368607574:web:363e73d681329d7dc344f7"
+};
+
+firebase.initializeApp(firebaseConfig);
+const database = firebase.database();
+
+function carregarFasesEDepois(callback) {
+  mostrarLoading();
+  firebase.database().ref('desafios').once('value')
+    .then((snapshot) => {
+      const desafiosData = snapshot.val();
+      fases = Object.entries(desafiosData).map(([_, desafio]) => ({
+        titulo: desafio.texto01,
+        imagem: desafio.imagem01,
+        descricao: desafio.texto02,
+        respostaCorreta: desafio.resposta
+      }));
+
+      faseAtual = 0;
+      desempenho = Array(fases.length).fill(null);
+
+      if (callback) callback();
+    })
+    .catch(error => {
+      alert("Erro ao carregar dados do Firebase: " + error.message);
+    })
+    .finally(() => setTimeout(esconderLoading, 2000));
+}

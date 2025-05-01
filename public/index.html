@@ -3,56 +3,71 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Jogo de Lógica e Investigação</title>
+  <title>Enigmalizando</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
-  <script src="script.js" defer></script>
 </head>
 <body>
-  <div id="loginScreen" class="login-screen">
-    <h2>Bem-vindo ao <strong>Enigmalizando</strong></h2>
-    <p class="login-subtitle">Escolha sua opção de login para começar:</p>
 
-    <button onclick="loginGoogle()" class="btn-login google">Google</button>
-    <button onclick="loginAnonimo()" class="btn-login anonimo">Anônimo</button>
+<div id="loginScreen" class="login-screen">
+  <h2>Bem-vindo ao <strong>Enigmalizando</strong></h2>
+  <p class="login-subtitle">Escolha sua opção de login para começar:</p>
+  <button onclick="loginGoogle()" class="btn-login google">Google</button>
+  <button onclick="loginAnonimo()" class="btn-login anonimo">Anônimo</button>
+  <p class="login-note">⚠️ No modo anônimo, o progresso não será salvo.</p>
+</div>
 
-    <p class="login-note">⚠️ No modo anônimo, o progresso não será salvo.</p>
-  </div>
-
-  <div id="gameScreen" style="display: none;">
-    <div class="container">
-      <div class="fase">
-        <div class="fase-status">
-          <div id="marcadorFase" class="marcador"></div>
-          <div class="barra-progresso">
-            <div id="progresso" class="progresso"></div>
-          </div>
-        </div>
-
-        <h2 id="titulo">Título da Fase</h2>
-        <img id="imagem" src="" alt="Imagem da pista">
-        <p id="descricao">Descrição da pista</p>
-        <div class="resposta-bloco">
-          <input type="text" id="resposta" placeholder="Digite sua resposta" oninput="atualizarContador()" onkeydown="if(event.key==='Enter'){ verificarResposta(); }">
-          <button onclick="verificarResposta()">✔</button>
-        </div>
-        <div id="contadorCaracteres" class="contador-caracteres"></div>
-        <div class="mensagem" id="mensagem"></div>
+<div id="gameScreen" style="display: none;">
+  <div class="container">
+    <div class="fase">
+      <div class="fase-status">
+        <div id="marcadorFase" class="marcador"></div>
+        <div class="barra-progresso"><div id="progresso" class="progresso"></div></div>
       </div>
+      <h2 id="titulo">Título</h2>
+      <img id="imagem" src="" style="display:none" alt="Imagem da Fase">
+      <p id="descricao">Descrição</p>
+      <div class="resposta-bloco">
+        <input type="text" id="resposta" placeholder="Digite sua resposta" oninput="atualizarContador()" onkeydown="if(event.key==='Enter'){ verificarResposta(); }">
+        <button onclick="verificarResposta()">✔</button>
+      </div>
+      <div id="contadorCaracteres" class="contador-caracteres"></div>
+      <div id="mensagem" class="mensagem"></div>
     </div>
   </div>
+</div>
 
-  <div id="loadingOverlay" class="loading-overlay" style="display: none;">
-    <div class="spinner"></div>
-    <p id="loadingText">Carregando...</p>
-  </div>
+<div id="loadingOverlay" class="loading-overlay" style="display: none;">
+  <div class="spinner"></div>
+  <p id="loadingText">Carregando...</p>
+</div>
 
-  <div id="faseLoadingOverlay" class="loading-overlay" style="display: none;">
-    <div class="spinner"></div>
-    <p id="faseLoadingText">Carregando próxima fase...</p>
+<div id="faseLoadingOverlay" class="loading-overlay" style="display: none;">
+  <div class="spinner"></div>
+  <p id="faseLoadingText">Carregando próxima fase...</p>
+</div>
+
+<div id="parabensScreen" style="display: none; position:fixed; top:0; left:0; width:100%; height:100%; background:black; justify-content:center; align-items:center; flex-direction:column;">
+  <canvas id="fireworksCanvas" style="position:absolute; top:0; left:0; width:100%; height:100%;"></canvas>
+  <div style="z-index:1; text-align:center; color:white;">
+    <h1>PARABÉNS!</h1>
+    <img src="img/congrats_resized.png" alt="Troféu" style="max-width:600px; width:100%; height:auto;">
+    <h2>VOCÊ COMPLETOU TODAS AS FASES!</h2>
+    
+    <button onclick="reiniciarJogo()" class="btn-parabens restart">Jogar Novamente</button>
   </div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+
+<script src="js/firebase.js"></script>
+<script src="js/loading.js"></script>
+<script src="js/fase.js"></script>
+<script src="js/login.js"></script>
+<script src="js/resposta.js"></script>
+<script src="js/fireworks.js"></script>
+
 </body>
 </html>

@@ -63,6 +63,37 @@ body {
   background-color: #777;
 }
 
+
+.btn-parabens {
+  width: 220px;
+  padding: 12px 24px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.btn-parabens.restart {
+  background-color: #555;
+  color: white;
+}	
+
+.btn-parabens.restart:hover {
+  background-color: #777;
+}
+
+.btn-parabens.sound {
+  background-color: #555;
+  color: white;
+}	
+
+.btn-parabens.sound:hover {
+  background-color: #777;
+}
+
 .login-note {
   margin-top: 20px;
   font-size: 13px;
