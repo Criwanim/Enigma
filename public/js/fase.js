@@ -23,9 +23,9 @@ function atualizarProgresso() {
 function atualizarContador() {
   const respostaInput = document.getElementById('resposta');
   const contador = document.getElementById('contadorCaracteres');
-  const respostaCorreta = fases[faseAtual]?.respostaCorreta || "";
+  const tamanhoEsperado = fases[faseAtual]?.tamanhoResposta || 0;
 
-  const restantes = Math.max(0, respostaCorreta.length - respostaInput.value.length);
+  const restantes = Math.max(0, tamanhoEsperado - respostaInput.value.length);
 
   contador.innerText = `Caracteres restantes: ${restantes}`;
 }

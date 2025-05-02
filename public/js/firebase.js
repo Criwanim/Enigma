@@ -20,7 +20,8 @@ function carregarFasesEDepois(callback) {
         titulo: desafio.texto01,
         imagem: desafio.imagem01,
         descricao: desafio.texto02,
-        respostaCorreta: desafio.resposta
+        respostaCorreta: desafio.resposta,
+		tamanhoResposta: parseInt(desafio.QtdeCaracteresResposta)
       }));
 
       faseAtual = 0;

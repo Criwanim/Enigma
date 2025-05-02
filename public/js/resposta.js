@@ -1,10 +1,11 @@
 
 function verificarResposta() {
   const resposta = document.getElementById('resposta').value.toLowerCase().trim();
-  const correta = fases[faseAtual].respostaCorreta.toLowerCase();
+  const respostaCriptografada = CryptoJS.MD5(resposta).toString();
+  const corretaCriptografada = fases[faseAtual].respostaCorreta;
   const mensagem = document.getElementById('mensagem');
 
-  if (resposta === correta) {
+  if (respostaCriptografada === corretaCriptografada) {
     mensagem.style.color = "green";
     mensagem.innerText = "";
 	mostrarLoading();
@@ -15,10 +16,6 @@ function verificarResposta() {
     setTimeout(() => {
       if (faseAtual < fases.length - 1) {
         faseAtual++;
-        const user = firebase.auth().currentUser;
-        if (user) {
-          firebase.database().ref(`progresso/${user.uid}`).set({ faseAtual });
-        }
         carregarFase();
 		setTimeout(() => {
 			esconderLoading();
@@ -50,10 +47,5 @@ function reiniciarJogo() {
   document.getElementById('loginScreen').style.display = 'flex';
   fases = [];
   faseAtual = 0;
-  const user = firebase.auth().currentUser;
-  if (user) {
-    firebase.database().ref(`progresso/${user.uid}`).remove();
-  }
-
   desempenho = [];
 }

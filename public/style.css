@@ -63,6 +63,14 @@ body {
   background-color: #777;
 }
 
+.btn-login.facebook {
+  background-color: #3b5998;
+  color: white;
+}
+
+.btn-login.facebook:hover {
+  background-color: #2d4373;
+}
 
 .btn-parabens {
   width: 220px;
