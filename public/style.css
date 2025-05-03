@@ -117,6 +117,7 @@ body {
 
 .container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   flex-grow: 1;
@@ -282,4 +283,39 @@ input[type="text"] {
   font-size: 14px;
   color: #ccc;
   text-align: center;
+}
+
+.navegacao-fases {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.botao-fase {
+  width: 40px;
+  height: 40px;
+  background-color: #007bff; /* azul padrão */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.botao-fase:disabled {
+  background-color: #555;
+  color: #aaa;
+  cursor: not-allowed;
+}
+
+.botao-fase:hover:not(:disabled) {
+  background-color: #0069d9;
+}
+
+.botao-fase.ativa {
+  background-color: #0056b3; /* azul mais escuro para a fase atual */
+  color: white;
 }

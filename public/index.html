@@ -21,11 +21,11 @@
 
 <div id="gameScreen" style="display: none;">
   <div class="container">
+    <div class="fase-status">
+      <div id="marcadorFase" class="marcador"></div>
+      <div class="barra-progresso"><div id="progresso" class="progresso"></div></div>
+    </div>
     <div class="fase">
-      <div class="fase-status">
-        <div id="marcadorFase" class="marcador"></div>
-        <div class="barra-progresso"><div id="progresso" class="progresso"></div></div>
-      </div>
       <h2 id="titulo">Título</h2>
       <img id="imagem" src="" style="display:none" alt="Imagem da Fase">
       <p id="descricao">Descrição</p>
@@ -36,8 +36,13 @@
       <div id="contadorCaracteres" class="contador-caracteres"></div>
       <div id="mensagem" class="mensagem"></div>
     </div>
+
+    <div id="navegacaoFases" class="navegacao-fases"></div>
   </div>
+  
 </div>
+
+
 
 <div id="loadingOverlay" class="loading-overlay" style="display: none;">
   <div class="spinner"></div>
@@ -49,11 +54,13 @@
   <p id="faseLoadingText">Carregando próxima fase...</p>
 </div>
 
+
+
 <div id="parabensScreen" style="display: none; position:fixed; top:0; left:0; width:100%; height:100%; background:black; justify-content:center; align-items:center; flex-direction:column;">
   <canvas id="fireworksCanvas" style="position:absolute; top:0; left:0; width:100%; height:100%;"></canvas>
   <div style="z-index:1; text-align:center; color:white;">
     <h1>PARABÉNS!</h1>
-    <img src="img/congrats_resized.png" alt="Troféu" style="max-width:600px; width:100%; height:auto;">
+    <img src="img/trofeu.png" alt="Troféu" style="max-width:300px; width:100%; height:auto;">
     <h2>VOCÊ COMPLETOU TODAS AS FASES!</h2>
     
     <button onclick="reiniciarJogo()" class="btn-parabens restart">Jogar Novamente</button>

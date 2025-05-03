@@ -11,6 +11,7 @@ function carregarFase() {
 
   atualizarProgresso();
   atualizarContador();
+  renderizarNavegacaoFases();
 }
 
 function atualizarProgresso() {
@@ -28,4 +29,34 @@ function atualizarContador() {
   const restantes = Math.max(0, tamanhoEsperado - respostaInput.value.length);
 
   contador.innerText = `Caracteres restantes: ${restantes}`;
+}
+
+function renderizarNavegacaoFases() {
+  const container = document.getElementById("navegacaoFases");
+  container.innerHTML = "";
+
+  const primeiraNaoRespondida = desempenho.findIndex(x => x !== true);
+
+  fases.forEach((_, index) => {
+    const botao = document.createElement("button");
+    botao.className = "botao-fase";
+    botao.innerText = index + 1;
+
+    const atual = index === faseAtual;
+    const desbloqueado = desempenho[index] === true || index === primeiraNaoRespondida;
+
+    if (atual) {
+      botao.classList.add("ativa");
+    }
+
+    botao.disabled = !desbloqueado;
+
+    botao.onclick = () => {
+      faseAtual = index;
+      carregarFase();
+      renderizarNavegacaoFases();
+    };
+
+    container.appendChild(botao);
+  });
 }
