@@ -13,7 +13,14 @@ function verificarResposta() {
     atualizarProgresso();
     atualizarContador();
 
-    setTimeout(() => {
+    const user = firebase.auth().currentUser;
+    if (user) {
+      firebase.database().ref(`progresso/${user.uid}`).set({
+        desempenho: desempenho,
+        faseAtual: faseAtual
+      });
+    }
+        setTimeout(() => {
       if (faseAtual < fases.length - 1) {
         faseAtual++;
         carregarFase();
