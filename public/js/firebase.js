@@ -19,10 +19,20 @@ function carregarFasesEDepois(callback) {
   mostrarLoading();
   const user = firebase.auth().currentUser;
 
+  // Fase 0 tutorial fixa
+  fases = [{
+    titulo: "... espalha rama pelo chão.",
+    imagem: "img/tutorial.gif", 
+    descricao: "... quando dorme poe a mão no ______.",
+    respostaCorreta: CryptoJS.MD5("coracao").toString(),
+    tamanhoResposta: 7
+  }];
+
   firebase.database().ref('desafios').once('value')
     .then(snapshot => {
       const desafiosData = snapshot.val();
-      fases = Object.entries(desafiosData).map(([_, desafio]) => ({
+
+      const fasesFirebase = Object.entries(desafiosData).map(([_, desafio]) => ({
         titulo: desafio.texto01,
         imagem: desafio.imagem01,
         descricao: desafio.texto02,
@@ -30,7 +40,10 @@ function carregarFasesEDepois(callback) {
         tamanhoResposta: parseInt(desafio.QtdeCaracteresResposta)
       }));
 
-      // Agora, se o usuário estiver logado, carregamos o progresso DEPOIS das fases
+      // Adiciona as fases do Firebase após a Fase 0
+      fases = [...fases, ...fasesFirebase];
+
+      // Carrega progresso se o usuário estiver logado
       if (user) {
         return firebase.database().ref(`progresso/${user.uid}`).once('value');
       }
@@ -49,6 +62,8 @@ function carregarFasesEDepois(callback) {
     })
     .catch(error => {
       alert("Erro ao carregar dados do Firebase: " + error.message);
+
+      // Se falhar, continua só com a fase 0
       desempenho = Array(fases.length).fill(null);
       faseAtual = 0;
     })
