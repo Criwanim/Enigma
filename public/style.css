@@ -287,6 +287,22 @@ input[type="text"] {
   text-align: center;
 }
 
+.contador-excedido {
+  color: red;
+  animation: brilhoVermelho 0.5s ease-in-out;
+}
+
+@keyframes brilhoVermelho {
+  0%   { text-shadow: 0 0 2px red; }
+  50%  { text-shadow: 0 0 8px red; }
+  100% { text-shadow: 0 0 2px red; }
+}
+
+.contador-normal {
+  color: #ccc;
+  text-shadow: none;
+}
+
 .navegacao-fases {
   margin-top: 30px;
   display: flex;

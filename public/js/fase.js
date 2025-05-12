@@ -21,14 +21,24 @@ function atualizarProgresso() {
   progresso.style.width = `${(concluidas / total) * 100}%`;
 }
 
+let temporizadorContador = null;
+
 function atualizarContador() {
   const respostaInput = document.getElementById('resposta');
   const contador = document.getElementById('contadorCaracteres');
   const tamanhoEsperado = fases[faseAtual]?.tamanhoResposta || 0;
 
-  const restantes = Math.max(0, tamanhoEsperado - respostaInput.value.length);
+  const atual = respostaInput.value.length;
+  const restantes = Math.max(0, tamanhoEsperado - atual);
 
   contador.innerText = `Caracteres restantes: ${restantes}`;
+
+  if (atual > tamanhoEsperado) {
+    aplicarEfeitoContador(contador);
+  } else {
+    contador.classList.remove("contador-excedido");
+    contador.classList.add("contador-normal");
+  }
 }
 
 function renderizarNavegacaoFases() {
@@ -60,3 +70,4 @@ function renderizarNavegacaoFases() {
     container.appendChild(botao);
   });
 }
+
