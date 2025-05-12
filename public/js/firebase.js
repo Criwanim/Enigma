@@ -20,13 +20,13 @@ function carregarFasesEDepois(callback) {
   const user = firebase.auth().currentUser;
 
   // Fase 0 tutorial fixa
-  fases = [{
-    titulo: "... espalha rama pelo chão.",
-    imagem: "img/tutorial.gif", 
-    descricao: "... quando dorme poe a mão no ______.",
-    respostaCorreta: CryptoJS.MD5("coracao").toString(),
-    tamanhoResposta: 7
-  }];
+  // fases = [{
+  //  titulo: "... espalha rama pelo chão.",
+  //  imagem: "img/tutorial.gif", 
+  //  descricao: "... quando dorme poe a mão no ______.",
+  //  respostaCorreta: CryptoJS.MD5("coracao").toString(),
+  //  tamanhoResposta: 7
+  //}];
 
   firebase.database().ref('desafios').once('value')
     .then(snapshot => {
@@ -37,7 +37,8 @@ function carregarFasesEDepois(callback) {
         imagem: desafio.imagem01,
         descricao: desafio.texto02,
         respostaCorreta: desafio.resposta,
-        tamanhoResposta: parseInt(desafio.QtdeCaracteresResposta)
+        tamanhoResposta: parseInt(desafio.QtdeCaracteresResposta),
+        dicasIncorretas: desafio.dicasIncorretas || []
       }));
 
       // Adiciona as fases do Firebase após a Fase 0

@@ -38,9 +38,27 @@ function verificarResposta() {
     }, 500);
 
   } else {
+    let feedback = "Resposta incorreta. Tente novamente.";
+    const dicaTexto = fases[faseAtual]?.dicasIncorretas || "";
+    const respostaNormalizada = resposta.normalize("NFD").replace(/[\u0300-\u036f]/g, ""); // remove acentos
+  
+    if (dicaTexto.includes("--")) {
+      const [palavrasStr, comentario] = dicaTexto.split("--").map(s => s.trim().toLowerCase());
+      const palavras = palavrasStr.split(":").map(s => s.trim().normalize("NFD").replace(/[\u0300-\u036f]/g, ""));
+  
+      if (palavras.includes(respostaNormalizada)) {
+        feedback = comentario;
+      }
+    }
+  
     mensagem.style.color = "red";
-    mensagem.innerText = "Resposta incorreta. Tente novamente.";
+    mensagem.innerText = feedback;
     desempenho[faseAtual] = false;
+
+    // Esconde após 5 segundos com suavidade
+    setTimeout(() => {
+    mensagem.classList.add("oculta");
+    }, 5000);
   }
 }
 

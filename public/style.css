@@ -321,3 +321,14 @@ input[type="text"] {
   background-color: #0056b3; /* azul mais escuro para a fase atual */
   color: white;
 }
+
+.mensagem {
+  margin-top: 15px;
+  font-weight: bold;
+  opacity: 1;
+  transition: opacity 1s ease-in-out;
+}
+
+.mensagem.oculta {
+  opacity: 0;
+}
