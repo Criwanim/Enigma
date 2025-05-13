@@ -1,4 +1,9 @@
 /* ... conteúdo original ... */
+@font-face {
+  font-family: 'Calculadora';
+  src: url('fonts/DS-DIGIB.ttf') format('truetype');
+}
+
 body {
   font-family: 'Segoe UI', sans-serif;
   background: #121212;
@@ -347,4 +352,10 @@ input[type="text"] {
 
 .mensagem.oculta {
   opacity: 0;
+}
+
+
+.numero-digitado {
+  font-family: 'Calculadora', monospace;
+  letter-spacing: 2px;
 }

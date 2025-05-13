@@ -1,10 +1,10 @@
 function carregarFase() {
   const fase = fases[faseAtual];
 
-  document.getElementById('titulo').innerText = fase.titulo;
+  document.getElementById('titulo').innerHTML = aplicarFonteNosNumeros(fase.titulo);
   document.getElementById('imagem').style.display = fase.imagem ? 'block' : 'none';
   document.getElementById('imagem').src = fase.imagem || '';
-  document.getElementById('descricao').innerText = fase.descricao;
+  document.getElementById('descricao').innerHTML = aplicarFonteNosNumeros(fase.descricao);
   document.getElementById('resposta').value = '';
   document.getElementById('mensagem').innerText = '';
   document.getElementById('marcadorFase').innerText = `Fase ${faseAtual + 1} de ${fases.length}`;
@@ -71,3 +71,6 @@ function renderizarNavegacaoFases() {
   });
 }
 
+function aplicarFonteNosNumeros(texto) {
+  return texto.replace(/\d+/g, (match) => `<span class="numero-digitado">${match}</span>`);
+}
