@@ -1,5 +1,18 @@
-{
-  "projects": {
-    "default": "enigma-a7af6"
-  }
+"hosting": {
+  "public": "public",
+  "headers": [
+    {
+      "source": "**/*.ttf",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        },
+        {
+          "key": "Content-Type",
+          "value": "font/ttf"
+        }
+      ]
+    }
+  ]
 }
