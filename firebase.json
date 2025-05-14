@@ -19,10 +19,6 @@
     ],
     "rewrites": [
       {
-        "source": "/fonts/**",
-        "destination": "/fonts/DS-DIGIB.ttf"
-      },
-      {
         "source": "**",
         "destination": "/index.html"
       }
