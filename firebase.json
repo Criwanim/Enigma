@@ -6,15 +6,26 @@
       "**/.*",
       "**/node_modules/**"
     ],
-	"rewrites": [
-	  {
-		"source": "!/fonts/**",     // <- não reescreve caminhos de fontes
-		"destination": "/index.html"
-	  },
-	  {
-		"source": "**",
-		"destination": "/index.html"
-	  }
-	]
+    "headers": [
+      {
+        "source": "/fonts/*.ttf",
+        "headers": [
+          {
+            "key": "Access-Control-Allow-Origin",
+            "value": "*"
+          }
+        ]
+      }
+    ],
+    "rewrites": [
+      {
+        "source": "/fonts/**",
+        "destination": "/fonts/DS-DIGIB.ttf"
+      },
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
   }
 }
