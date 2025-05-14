@@ -86,7 +86,7 @@ function aplicarEfeitoContador(contador) {
   void contador.offsetWidth;
   contador.style.animation = null;
 
-  // Após 5 segundos, volta ao normal
+  // Após 5 segundos, volta ao normal // teste
   temporizadorContador = setTimeout(() => {
     contador.classList.remove("contador-excedido");
     contador.classList.add("contador-normal");
