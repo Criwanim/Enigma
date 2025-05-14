@@ -6,11 +6,15 @@
       "**/.*",
       "**/node_modules/**"
     ],
-    "rewrites": [
-      {
-        "source": "**",
-        "destination": "/index.html"
-      }
-    ]
+	"rewrites": [
+	  {
+		"source": "!/fonts/**",     // <- não reescreve caminhos de fontes
+		"destination": "/index.html"
+	  },
+	  {
+		"source": "**",
+		"destination": "/index.html"
+	  }
+	]
   }
 }
