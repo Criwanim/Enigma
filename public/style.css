@@ -1,7 +1,9 @@
 /* ... conteúdo original ... */
 @font-face {
   font-family: 'Calculadora';
-  src: url('/fonts/DS-DIGIB.ttf') format('truetype');
+  src: url('fonts/DS-Digital-Bold.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
 
 body {
