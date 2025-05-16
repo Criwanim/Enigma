@@ -19,6 +19,10 @@ body {
   align-items: center;
   min-height: 100vh;
 }
+.numero-digitado {
+  font-family: 'Calculadora', monospace;
+  letter-spacing: 2px;
+}
 
 .login-screen {
   display: flex;
@@ -359,7 +363,3 @@ input[type="text"] {
 }
 
 
-.numero-digitado {
-  font-family: 'Share Tech Mono', monospace;
-  letter-spacing: 2px;
-}
