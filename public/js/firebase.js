@@ -52,14 +52,20 @@ function carregarFasesEDepois(callback) {
       return null;
     })
     .then(snapshot => {
-      if (snapshot && snapshot.exists()) {
-        const dados = snapshot.val();
-        desempenho = Array.isArray(dados.desempenho) ? dados.desempenho : Array(fases.length).fill(null);
-        faseAtual = typeof dados.faseAtual === 'number' ? dados.faseAtual : 0;
-      } else {
-        desempenho = Array(fases.length).fill(null);
-        faseAtual = 0;
-      }
+	  if (snapshot && snapshot.exists()) {
+	  const dados = snapshot.val();
+	  if (Array.isArray(dados.desempenho)) {
+		  desempenho = dados.desempenho;
+		  const proximaFase = dados.desempenho.findIndex((resposta) => resposta !== true);
+		  faseAtual = proximaFase !== -1 ? proximaFase : dados.desempenho.length;
+	  } else {
+		  desempenho = Array(fases.length).fill(null);
+		  faseAtual = 0;
+	  }
+	  } else {
+	  desempenho = Array(fases.length).fill(null);
+	  faseAtual = 0;
+	  }
     })
     .catch(error => {
       alert("Erro ao carregar dados do Firebase: " + error.message);

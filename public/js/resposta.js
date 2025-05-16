@@ -7,8 +7,35 @@ function verificarResposta() {
   const tamanhoEsperado = fases[faseAtual]?.tamanhoResposta || 0;
   
   if (resposta.length < tamanhoEsperado) {
-	aplicarEfeitoContador(contador);
-	return;
+    let feedback = `A resposta deve ter ${tamanhoEsperado} caracteres.`;
+    const dicaTexto = fases[faseAtual]?.dicasIncorretas || "";
+    const respostaNormalizada = resposta.normalize("NFD").replace(/[\u0300-\u036f]/g, ""); // remove acentos
+  
+    const dicasArray = dicaTexto.split(";").map(s => s.trim());
+    for (const dica of dicasArray) {
+      if (dica.includes("--")) {
+        const [palavrasStr, comentario] = dica.split("--").map(s => s.trim().toLowerCase());
+        const palavras = palavrasStr.split(":").map(s =>
+          s.trim().normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+        );
+  
+        if (palavras.includes(respostaNormalizada)) {
+          feedback = comentario;
+          break;
+        }
+      }
+    }
+  
+    mensagem.style.color = "red";
+    mensagem.innerText = feedback;
+    mensagem.classList.remove("oculta");
+    aplicarEfeitoContador(contador);
+  
+    setTimeout(() => {
+      mensagem.classList.add("oculta");
+    }, 5000);
+  
+    return;
   }
   mensagem.classList.remove("oculta");
 
