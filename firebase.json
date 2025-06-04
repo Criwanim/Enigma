@@ -25,6 +25,9 @@
       {
         "source": "**",
         "destination": "/index.html"
+      },
+      { "source": "/privacidade",
+       "destination": "/privacidade.html" 
       }
     ]
   }
