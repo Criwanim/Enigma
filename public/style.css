@@ -148,9 +148,9 @@ body {
 
 img {
   width: 100%;
-  max-width: 500px; /* largura máxima padronizada */
-  height: 300px;     /* altura fixa padronizada */
-  object-fit: cover; /* mantém proporção e preenche o espaço */
+  max-width: 500px;
+  height: auto;
+  object-fit: contain;
   border-radius: 10px;
   margin: 15px auto;
   display: block;
